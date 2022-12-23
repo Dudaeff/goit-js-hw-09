@@ -16,3 +16,31 @@ img {
   display: block;
   max-width: 100%;
 }
+
+.timer {
+  display: flex;
+  width: calc(130px * 4);
+  margin: 0 auto;
+}
+
+.field {
+  display: flex;
+  flex-direction: column;
+  width: 130px;
+  padding: 0 10px;
+
+  border: 2px solid greenyellow;
+}
+
+.value {
+  text-align: center;
+  font-size: 44px;
+  color: white;
+  border-bottom: 2px solid greenyellow;
+}
+
+.label {
+  text-align: center;
+  font-size: 24px;
+  color: white;
+}
