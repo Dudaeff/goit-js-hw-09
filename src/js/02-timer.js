@@ -11,7 +11,6 @@ const refs = {
     seconds: document.querySelector('[data-seconds]'),
     timer: document.querySelector('.timer'),
 };
-
 const options = {
     enableTime: true,
     time_24hr: true,
@@ -19,31 +18,41 @@ const options = {
     minuteIncrement: 1,
     onClose(selectedDates) {
         const currentDate = Date.now();
+        const timeToDeadline = convertMs(selectedDates[0] - currentDate);
 
         if (selectedDates[0] <= currentDate) {
             Notify.info('Please choose a date in the future');
             return;
         } else {
-            refs.startBtn.removeAttribute('disabled');
+            refs.startBtn.disabled = false;
+            initializeTimer(timeToDeadline);
         };
     },
 };
-
 const fp = flatpickr('#datetime-picker', options);
-let intervalId = null;
+let timerIntervalId = null;
+let bgColorIntervalId = null;
+refs.startBtn.disabled = true;
 
 refs.startBtn.addEventListener('click', onStartBtnClick);
 
 function onStartBtnClick() {
     updateTimer();
-    intervalId = setInterval(updateTimer, 1000); 
+    timerIntervalId = setInterval(updateTimer, 1000); 
+    
+    refs.startBtn.disabled = true; 
 
-    refs.startBtn.setAttribute('disabled', 'disabled');
-
-    setInterval(() => {
+    bgColorIntervalId = setInterval(() => {
         refs.timer.style.backgroundColor = getRandomHexColor();
-    }, 1000);
+    }, 5000);
 };
+
+function initializeTimer({ days, hours, minutes, seconds }) {
+    refs.days.textContent = days;
+    refs.hours.textContent = hours;
+    refs.minutes.textContent = minutes;
+    refs.seconds.textContent = seconds;
+}
 
 function updateTimer() {
         const timeToDeadline = fp.selectedDates[0] - Date.now();
@@ -54,7 +63,8 @@ function updateTimer() {
         refs.seconds.textContent = addLeadingZero(seconds);
  
     if (days <= 0 && hours <= 0 && minutes <= 0 && seconds <= 0) {
-        clearInterval(intervalId)
+        clearInterval(intervalId);
+        clearInterval(bgColorIntervalId);
         return;
     }
 };

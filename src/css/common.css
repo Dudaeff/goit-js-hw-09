@@ -19,7 +19,7 @@ img {
 
 .timer {
   display: flex;
-  width: calc(130px * 4);
+  width: calc(100px * 4);
   margin: 0 auto;
 
   background-color: black;
@@ -28,8 +28,8 @@ img {
 .field {
   display: flex;
   flex-direction: column;
-  width: 130px;
-  padding: 0 10px;
+  width: 100px;
+  padding: 0 5px;
 
   border: 2px solid greenyellow;
 }
@@ -45,4 +45,21 @@ img {
   text-align: center;
   font-size: 24px;
   color: white;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  row-gap: 5px;
+}
+
+.form>button {
+  width: 120px;
+  height: 30px;
+}
+
+.form>label:nth-child(3) {
+  display: flex;
+  column-gap: 32px;
+  padding-left: 25px;
 }
