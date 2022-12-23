@@ -38,6 +38,8 @@ function onStartBtnClick() {
     updateTimer();
     intervalId = setInterval(updateTimer, 1000); 
 
+    refs.startBtn.setAttribute('disabled', 'disabled');
+
     setInterval(() => {
         refs.timer.style.backgroundColor = getRandomHexColor();
     }, 1000);

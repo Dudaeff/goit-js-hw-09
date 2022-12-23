@@ -21,6 +21,8 @@ img {
   display: flex;
   width: calc(130px * 4);
   margin: 0 auto;
+
+  background-color: black;
 }
 
 .field {
