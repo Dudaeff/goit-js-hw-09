@@ -15,13 +15,11 @@ function onFormSubmit(evt) {
   const firstDelay = Number(refs.firstDelay.value);
   const step = Number(refs.step.value);
   const amount = Number(refs.amount.value);
-
+  
   for (let i = 1; i <= amount; i += 1){
-    const delayStep = firstDelay + step * (i - 1);
-
-    setTimeout(() => {
-      createPromise(i, delayStep).then(onSuccess).catch(onError);
-    },firstDelay);
+    let delayStep = firstDelay;
+    setTimeout(()=> createPromise(i, delayStep).then(onSuccess).catch(onError));
+    delayStep = firstDelay + step * (i - 1);
   };
 };
 

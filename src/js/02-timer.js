@@ -63,7 +63,7 @@ function updateTimer() {
         refs.seconds.textContent = addLeadingZero(seconds);
  
     if (days <= 0 && hours <= 0 && minutes <= 0 && seconds <= 0) {
-        clearInterval(intervalId);
+        clearInterval(timerIntervalId);
         clearInterval(bgColorIntervalId);
         return;
     }
