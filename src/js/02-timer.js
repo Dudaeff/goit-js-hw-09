@@ -48,10 +48,10 @@ function onStartBtnClick() {
 };
 
 function initializeTimer({ days, hours, minutes, seconds }) {
-    refs.days.textContent = days;
-    refs.hours.textContent = hours;
-    refs.minutes.textContent = minutes;
-    refs.seconds.textContent = seconds;
+    refs.days.textContent = addLeadingZero(days);
+    refs.hours.textContent = addLeadingZero(hours);
+    refs.minutes.textContent = addLeadingZero(minutes);
+    refs.seconds.textContent = addLeadingZero(seconds);
 }
 
 function updateTimer() {
