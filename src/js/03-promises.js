@@ -17,9 +17,8 @@ function onFormSubmit(evt) {
   const amount = Number(refs.amount.value);
   
   for (let i = 1; i <= amount; i += 1){
-    let delayStep = firstDelay;
-    setTimeout(()=> createPromise(i, delayStep).then(onSuccess).catch(onError));
-    delayStep = firstDelay + step * (i - 1);
+    const delayStep = firstDelay + step * (i - 1);
+    createPromise(i, delayStep).then(onSuccess).catch(onError)
   };
 };
 
